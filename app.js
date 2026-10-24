@@ -3,12 +3,13 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
-const authRoutes = require('./src/routes/auth.route');
-const checkRoutes = require('./src/routes/check.route');
-const reportRoutes = require('./src/routes/report.route');
-const feedRoutes = require('./src/routes/feed.route');
-const adminRoutes = require('./src/routes/admin.route');
-const { notFound, errorHandler } = require('./src/middleware/errorHandler');
+const authRoutes = require('./routes/auth.route');
+const checkRoutes = require('./routes/check.route');
+const reportRoutes = require('./routes/report.route');
+const feedRoutes = require('./routes/feed.route');
+const adminRoutes = require('./routes/admin.route');
+const liveRoutes = require('./routes/live.route');
+const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
 app.set('trust proxy', 1); // correct client IP behind Render / Railway / Vercel
@@ -22,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/check', checkRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/feed', feedRoutes);
+app.use('/api/live', liveRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.get('/', (req, res) => res.status(200).json({ message: 'ScamShield server is live and running successfully!' }));

@@ -1,11 +1,20 @@
 {
   "name": "back_end",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "ScamShield backend",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "node server.js",
-    "dev": "npx nodemon server.js"
+    "dev": "npx nodemon server.js",
+    "providers": "node scripts/bootstrapProviders.js",
+    "seed": "node scripts/seed.js",
+    "seed:reset": "node scripts/seed.js --reset",
+    "ai:check": "node scripts/aiCheck.js",
+    "ai:research": "node scripts/aiCheck.js --research",
+    "test": "node tests/pipeline.test.js && node tests/live.test.js && node tests/ai.test.js"
   },
   "keywords": [],
   "type": "commonjs",
